@@ -1,56 +1,44 @@
 import 'package:flutter/material.dart';
-import 'detalhes_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String nome;
 
   HomeScreen({required this.nome});
 
-  final List<Map<String, String>> lugares = [
-    {'nome': 'Cliffs of Moher', 'descricao': 'Falésias incríveis com vista para o oceano.'},
-    {'nome': 'Dublin', 'descricao': 'Capital da Irlanda, cheia de cultura e pubs.'},
-    {'nome': 'Galway', 'descricao': 'Cidade vibrante com música e arte.'},
-    {'nome': 'Cork', 'descricao': 'Conhecida pela gastronomia e história.'},
-    {'nome': 'Ring of Kerry', 'descricao': 'Rota turística com paisagens naturais.'},
+  final List<Map<String, String>> livros = [
+    {'titulo': 'Dom Casmurro', 'autor': 'Machado de Assis'},
+    {'titulo': '1984', 'autor': 'George Orwell'},
+    {'titulo': 'O Hobbit', 'autor': 'J.R.R. Tolkien'},
+    {'titulo': 'A Revolução dos Bichos', 'autor': 'George Orwell'},
+    {'titulo': 'Harry Potter', 'autor': 'J.K. Rowling'},
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Lugares na Irlanda')),
+      appBar: AppBar(
+        title: Text('Meus Livros'),
+        automaticallyImplyLeading: false, // 🔥 não volta pro login
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Bem-vindo, $nome!', style: TextStyle(fontSize: 18)),
+            Text(
+              'Bem-vindo, $nome!',
+              style: TextStyle(fontSize: 18),
+            ),
             SizedBox(height: 20),
+
             Expanded(
-              child: GridView.builder(
-                itemCount: lugares.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
+              child: ListView.builder(
+                itemCount: livros.length,
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetalhesScreen(lugar: lugares[index]),
-                        ),
-                      );
-                    },
-                    child: Card(
-                      elevation: 3,
-                      child: Center(
-                        child: Text(
-                          lugares[index]['nome']!,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+                  return Card(
+                    child: ListTile(
+                      title: Text(livros[index]['titulo']!),
+                      subtitle: Text(livros[index]['autor']!),
                     ),
                   );
                 },

@@ -1,60 +1,65 @@
-# 🇮🇪 Irlanda Turismo App
+# 📱 Controle de Leitura - Flutter
 
-## 📱 Descrição
+## 📌 Descrição
 
-Aplicativo mobile desenvolvido em Flutter que simula um sistema de cadastro e login de usuário, permitindo a visualização de locais turísticos da Irlanda.
-
-O app foi projetado para demonstrar conceitos fundamentais de desenvolvimento mobile utilizando Flutter, com navegação entre telas e interface interativa.
+Este aplicativo foi desenvolvido como parte de uma avaliação prática de desenvolvimento mobile utilizando Flutter.
+O objetivo do app é simular um sistema simples de controle de leitura, permitindo cadastro de usuário, login fictício e visualização dos últimos livros lidos.
 
 ---
 
 ## 🚀 Funcionalidades
 
 * Cadastro de usuário (nome, email e senha)
-* Login fictício com validação simples
-* Exibição de mensagem personalizada com o nome do usuário
-* Lista de locais turísticos da Irlanda
-* Visualização em formato de grade (GridView)
-* Navegação para tela de detalhes de cada local
+* Validação simples de campos obrigatórios
+* Login fictício
+* Navegação entre telas
+* Exibição de mensagem de boas-vindas com nome do usuário
+* Listagem dos últimos 5 livros lidos (título e autor)
+* Bloqueio de retorno para tela de login após autenticação
 
 ---
 
-## 📲 Telas do Aplicativo
+## 📱 Telas do Aplicativo
 
-### 🔐 Tela de Cadastro
+### 🟢 Tela de Cadastro
 
 * Campos: Nome, Email e Senha
-* Validação simples dos dados
-* Redirecionamento para tela de Login após cadastro
+* Validação de campos vazios
+* Botão para cadastro
+* Redirecionamento para tela de login após cadastro
 
-### 🔑 Tela de Login
+---
+
+### 🔵 Tela de Login
 
 * Campos: Email e Senha
-* Validação básica
-* Navegação para a tela Home ao entrar
+* Validação simples
+* Botão de entrada
+* Botão para ir para cadastro
+* Redirecionamento para a tela Home após login
 
-### 🏠 Tela Home
+---
 
-* Mensagem de boas-vindas com nome do usuário
-* Exibição dos locais turísticos em formato de grade
-* Clique em um local abre a tela de detalhes
+### 🟣 Tela Home
 
-### 📍 Tela de Detalhes
+* Exibe mensagem de boas-vindas com o nome do usuário
+* Lista com 5 livros contendo:
 
-* Exibe o nome do local
-* Mostra uma descrição do ponto turístico selecionado
+  * Título
+  * Autor
+* Uso de `ListView.builder`
+* Não permite voltar para tela de login
 
 ---
 
 ## 🧠 Conceitos Utilizados
 
-* Flutter
-* Dart
-* StatefulWidget e StatelessWidget
-* Gerenciamento de estado com setState
-* Navegação entre telas com Navigator
-* ListView e GridView
-* Organização de projeto em pastas
+* Flutter e Dart
+* Widgets (`StatelessWidget` e `StatefulWidget`)
+* Navegação entre telas (`Navigator.push` e `Navigator.pushReplacement`)
+* Gerenciamento de estado básico (`setState`)
+* Uso de `TextEditingController`
+* Estruturação de projeto em pastas
 
 ---
 
@@ -66,24 +71,23 @@ lib/
  └── screens/
      ├── cadastro_screen.dart
      ├── login_screen.dart
-     ├── home_screen.dart
-     └── detalhes_screen.dart
+     └── home_screen.dart
 ```
 
 ---
 
 ## ▶️ Como Executar o Projeto
 
-1. Clone o repositório:
+1. Clone este repositório:
 
 ```
-git clone https://github.com/seu-usuario/irlanda_app.git
+git clone https://github.com/seu-usuario/seu-repositorio.git
 ```
 
 2. Acesse a pasta do projeto:
 
 ```
-cd irlanda_app
+cd nome-do-projeto
 ```
 
 3. Instale as dependências:
@@ -92,7 +96,7 @@ cd irlanda_app
 flutter pub get
 ```
 
-4. Execute o aplicativo:
+4. Execute o projeto:
 
 ```
 flutter run
@@ -100,17 +104,20 @@ flutter run
 
 ---
 
+## 📸 Prints do Aplicativo (Opcional)
+
+Adicione aqui imagens das telas do app funcionando para melhor visualização.
+
+---
+
 ## 📌 Observações
 
-* Este aplicativo não utiliza banco de dados
-* Os dados são armazenados apenas em memória
-* Projeto desenvolvido para fins educacionais
+Este projeto não utiliza banco de dados ou backend, pois segue o escopo da atividade proposta, que exige apenas simulação de cadastro e login.
 
 ---
 
 ## 👨‍💻 Autor
 
-**Cristhian Silveira Mazon**
-Faculdade Senac Joinville — ADS
+Cristhian Silveira Mazon
 
 ---

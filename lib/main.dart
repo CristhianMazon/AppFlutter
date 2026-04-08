@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Irlanda Turismo',
+      title: 'Controle de Leitura',
       theme: ThemeData(primarySwatch: Colors.green),
       home: LoginScreen(),
     );

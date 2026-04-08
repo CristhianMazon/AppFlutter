@@ -12,16 +12,21 @@ class _CadastroScreenState extends State<CadastroScreen> {
   final senhaController = TextEditingController();
 
   void cadastrar() {
-    if (nomeController.text.isNotEmpty &&
-        emailController.text.isNotEmpty &&
-        senhaController.text.isNotEmpty) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LoginScreen(nome: nomeController.text),
-        ),
+    if (nomeController.text.isEmpty ||
+        emailController.text.isEmpty ||
+        senhaController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Preencha todos os campos')),
       );
+      return;
     }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoginScreen(nome: nomeController.text),
+      ),
+    );
   }
 
   @override
@@ -32,11 +37,24 @@ class _CadastroScreenState extends State<CadastroScreen> {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            TextField(controller: nomeController, decoration: InputDecoration(labelText: 'Nome')),
-            TextField(controller: emailController, decoration: InputDecoration(labelText: 'Email')),
-            TextField(controller: senhaController, decoration: InputDecoration(labelText: 'Senha'), obscureText: true),
+            TextField(
+              controller: nomeController,
+              decoration: InputDecoration(labelText: 'Nome'),
+            ),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            TextField(
+              controller: senhaController,
+              decoration: InputDecoration(labelText: 'Senha'),
+              obscureText: true,
+            ),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: cadastrar, child: Text('Cadastrar'))
+            ElevatedButton(
+              onPressed: cadastrar,
+              child: Text('Cadastrar'),
+            )
           ],
         ),
       ),

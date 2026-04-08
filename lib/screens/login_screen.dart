@@ -16,14 +16,23 @@ class _LoginScreenState extends State<LoginScreen> {
   final senhaController = TextEditingController();
 
   void login() {
-    if (emailController.text.isNotEmpty && senhaController.text.isNotEmpty) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => HomeScreen(nome: widget.nome.isNotEmpty ? widget.nome : emailController.text),
-        ),
+    if (emailController.text.isEmpty || senhaController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Preencha todos os campos')),
       );
+      return;
     }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomeScreen(
+          nome: widget.nome.isNotEmpty
+              ? widget.nome
+              : emailController.text,
+        ),
+      ),
+    );
   }
 
   void irParaCadastro() {
@@ -41,11 +50,24 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            TextField(controller: emailController, decoration: InputDecoration(labelText: 'Email')),
-            TextField(controller: senhaController, decoration: InputDecoration(labelText: 'Senha'), obscureText: true),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            TextField(
+              controller: senhaController,
+              decoration: InputDecoration(labelText: 'Senha'),
+              obscureText: true,
+            ),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: login, child: Text('Entrar')),
-            TextButton(onPressed: irParaCadastro, child: Text('Criar conta'))
+            ElevatedButton(
+              onPressed: login,
+              child: Text('Entrar'),
+            ),
+            TextButton(
+              onPressed: irParaCadastro,
+              child: Text('Criar conta'),
+            )
           ],
         ),
       ),
